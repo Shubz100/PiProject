@@ -35,7 +35,7 @@
             const uidValue = uidInput.value.trim(); // Get input value and trim whitespace
             const isValid = /^\d+$/.test(uidValue); // Check if the value is a positive integer
 
-            if (uid Value === '' || !isValid) {
+            if (uidValue === '' || !isValid) {
                 errorMessage.classList.remove('hidden'); // Show error message
                 nextButton.disabled = true; // Disable the button
             } else {
@@ -49,15 +49,8 @@
 
         // Event listener for the Next button click
         nextButton.addEventListener('click', function() {
-            const uidValue = uidInput.value.trim(); // Get the trimmed input value
-            if (uidValue === '') {
-                errorMessage.textContent = "Please Enter A Valid Binance UID"; // Set new error message
-                errorMessage.classList.remove('hidden'); // Show error message
-            } else if (!/^\d+$/.test(uidValue)) {
-                errorMessage.textContent = "Binance UID invalid"; // Existing error message for invalid UID
-                errorMessage.classList.remove('hidden'); // Show error message
-            } else {
-                window.location.href = 'page3.html'; // Redirect to page3.html if valid
+            if (!nextButton.disabled) { // Only redirect if the button is enabled
+                window.location.href = 'page3.html'; // Redirect to page3.html
             }
         });
     </script>
