@@ -6,36 +6,7 @@
     <title>Pi Trader</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <style>
-        .custom-purple {
-            background-color: #670773;
-        }
-        .custom-purple-text {
-            color: #670773;
-        }
-        /* Sliding Menu Styles */
-        #menu {
-            position: fixed;
-            top: 0;
-            left: -250px; /* Initially hidden off-screen to the left */
-            width: 250px;
-            height: 100%;
-            background-color: #670773;
-            transition: left 0.3s ease; /* Animation */
-            z-index: 1000; /* Ensure it is above other content */
-        }
-        #menu.open {
-            left: 0; /* Slide in */
-        }
-        #menu ul {
-            list-style: none;
-            padding: 20px;
-            color: white;
-        }
-        #menu ul li {
-            margin: 15px 0;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body class="bg-gray-100 flex flex-col items-center justify-between min-h-screen">
     <div class="w-full custom-purple text-white p-4 flex items-center justify-between">
