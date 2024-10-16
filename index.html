@@ -1,12 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pi Trader</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="menustyles.css">
+    <style>
+        .custom-purple {
+            background-color: #670773;
+        }
+        .custom-purple-text {
+            color: #670773;
+        }
+    </style>
 </head>
 <body class="bg-gray-100 flex flex-col items-center justify-between min-h-screen">
     <div class="w-full custom-purple text-white p-4 flex items-center justify-between">
@@ -32,19 +36,9 @@
         </a>
     </div>
 
-    <!-- Sliding Menu -->
-    <div id="menu">
-        <ul>
-            <li><a href="#" class="custom-purple-text">Home</a></li>
-            <li><a href="#" class="custom-purple-text">Transaction History</a></li>
-            <li><a href="#" class="custom-purple-text">About</a></li>
-        </ul>
-    </div>
-
     <script>
         function toggleMenu() {
-            const menu = document.getElementById('menu');
-            menu.classList.toggle('open'); // Toggle the 'open' class
+            alert("Menu button clicked!");
         }
     </script>
 </body>
