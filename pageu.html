@@ -9,6 +9,16 @@
             color: #670773;
         }
     </style>
+    <script>
+        function validateInput() {
+            const upiInput = document.getElementById('upiId');
+            if (upiInput.value.trim() === '') {
+                alert('Please enter your UPI ID before proceeding.');
+                return false; // Prevent navigation
+            }
+            return true; // Allow navigation
+        }
+    </script>
 </head>
 <body class="bg-gray-100 flex flex-col items-center justify-start min-h-screen">
     <div class="w-full bg-custom-purple py-8">
@@ -17,10 +27,10 @@
     <div class="flex flex-col items-center justify-center flex-grow mt-6">
         <p class="text-red-600 text-xl font-bold mb-4">Re-Check Your UPI Id before Proceeding</p>
         <p class="text-black text-3xl font-bold mt-6">Enter Your UPI Id here</p>
-        <input type="text" placeholder="UPI Id" class="mt-4 p-4 border-2 border-black rounded w-3/4 max-w-md placeholder-opacity-50 placeholder-black">
+        <input type="text" id="upiId" placeholder="UPI Id" class="mt-4 p-4 border-2 border-black rounded w-3/4 max-w-md placeholder-opacity-50 placeholder-black">
     </div>
     <div class="mt-10 mb-10">
-        <a href="page3.html">
+        <a href="page3.html" onclick="return validateInput();">
             <button class="bg-custom-purple text-white text-2xl font-bold py-2 px-8 rounded-full">Next</button>
         </a>
     </div>
