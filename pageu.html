@@ -17,12 +17,49 @@
     <div class="flex flex-col items-center justify-center flex-grow mt-6">
         <p class="text-red-600 text-xl font-bold mb-4">Re-Check Your UPI Id before Proceeding</p>
         <p class="text-black text-3xl font-bold mt-6">Enter Your UPI Id here</p>
-        <input type="text" placeholder="UPI Id" class="mt-4 p-4 border-2 border-black rounded w-3/4 max-w-md placeholder-opacity-50 placeholder-black">
+        <input id="upi-id" type="text" placeholder="UPI Id" class="mt-4 p-4 border-2 border-black rounded w-3/4 max-w-md placeholder-opacity-50 placeholder-black">
+        <p id="error-message" class="text-red-600 mt-2 hidden">Please Enter A Valid UPI Id</p> <!-- Error message -->
     </div>
     <div class="mt-10 mb-10">
-        <a href="page3.html">
-            <button class="bg-custom-purple text-white text-2xl font-bold py-2 px-8 rounded-full">Next</button>
-        </a>
+        <button id="next-button" class="bg-custom-purple text-white text-2xl font-bold py-2 px-8 rounded-full" disabled>Next</button>
     </div>
+
+    <script>
+        // Get references to the input field, error message, and next button
+        const upiInput = document.getElementById('upi-id');
+        const errorMessage = document.getElementById('error-message');
+        const nextButton = document.getElementById('next-button');
+
+        // Function to validate UPI ID
+        function validateUPI() {
+            const upiValue = upiInput.value.trim(); // Get input value and trim whitespace
+            const isValid = /^[a-zA-Z0-9@.-]+$/.test(upiValue); // Check if the value is a valid UPI ID format
+
+            if (upiValue === '' || !isValid) {
+                errorMessage.classList.remove('hidden'); // Show error message
+                nextButton.disabled = true; // Disable the button
+            } else {
+                errorMessage.classList.add('hidden'); // Hide error message
+                nextButton.disabled = false; // Enable the button
+            }
+        }
+
+        // Event listener for input changes
+        upiInput.addEventListener('input', validateUPI);
+
+        // Event listener for the Next button click
+        nextButton.addEventListener('click', function() {
+            const upiValue = upiInput.value.trim(); // Get the trimmed input value
+            if (upiValue === '') {
+                errorMessage.textContent = "Please Enter A Valid UPI Id"; // Set new error message
+                errorMessage.classList.remove('hidden'); // Show error message
+            } else if (!/^[a-zA-Z0-9@.-]+$/.test(upiValue)) {
+                errorMessage.textContent = "Please Enter A Valid UPI Id"; // Existing error message for invalid UPI ID
+                errorMessage.classList.remove('hidden'); // Show error message
+            } else {
+                window.location.href = 'page3.html'; // Redirect to page3.html if valid
+            }
+        });
+    </script>
 </body>
 </html>
