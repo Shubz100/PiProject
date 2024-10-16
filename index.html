@@ -35,6 +35,16 @@
         #menu ul li {
             margin: 15px 0;
         }
+        .menu-item {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .close-button {
+            position: relative;
+            top: 5px;
+            right: 10px;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body class="bg-gray-100 flex flex-col items-center justify-between min-h-screen">
@@ -63,13 +73,13 @@
 
     <!-- Sliding Menu -->
     <div id="menu">
-    <button onclick="toggleMenu()" class="text-white">  Close</button>
-    <ul>
-        <li><a href="index.html" class="text-white" style="font-size: 20px; font-weight: bold;">Home</a></li>
-        <li><a href="#" class="text-white" style="font-size: 20px; font-weight: bold;">Transaction History</a></li>
-        <li><a href="#" class="text-white" style="font-size: 20px; font-weight: bold;">About</a></li>
-    </ul>
-</div>
+        <button onclick="toggleMenu()" class="text-white close-button">Close</button>
+        <ul>
+            <li><a href="index.html" class="text-white menu-item">Home</a></li>
+            <li><a href="#" class="text-white menu-item">Transaction History</a></li>
+            <li><a href="#" class="text-white menu-item">About</a></li>
+        </ul>
+    </div>
     <script>
         function toggleMenu() {
             const menu = document.getElementById('menu');
