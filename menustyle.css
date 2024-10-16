@@ -1,0 +1,45 @@
+.custom-purple {
+    background-color: #670773;
+}
+
+.custom-purple-text {
+    color: #670773;
+}
+
+/* Sliding Menu Styles */
+#menu {
+    position: fixed;
+    top: 0;
+    left: -250px; /* Initially hidden off-screen to the left */
+    width: 250px;
+    height: 100%;
+    background-color: #670773;
+    transition: left 0.3s ease; /* Animation */
+    z-index: 1000; /* Ensure it is above other content */
+    display: flex;
+    flex-direction: column; /* Align items vertically */
+}
+
+#menu.open {
+    left: 0; /* Slide in */
+}
+
+#menu ul {
+    list-style: none;
+    padding: 20px;
+    color: white;
+    margin: 0; /* Remove default margin */
+}
+
+#menu ul li {
+    margin: 15px 0;
+}
+
+#menu ul li a {
+    color: white; /* Ensure text color is white */
+    text-decoration: none; /* Remove underline */
+}
+
+#menu ul li a:hover {
+    text-decoration: underline; /* Optional: underline on hover */
+}
