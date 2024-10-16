@@ -25,7 +25,7 @@
     </div>
 
     <script>
-        // Get references to the input field and error message
+        // Get references to the input field, error message, and next button
         const uidInput = document.getElementById('binance-uid');
         const errorMessage = document.getElementById('error-message');
         const nextButton = document.getElementById('next-button');
@@ -46,6 +46,13 @@
 
         // Event listener for input changes
         uidInput.addEventListener('input', validateUID);
+
+        // Event listener for the Next button click
+        nextButton.addEventListener('click', function() {
+            if (!nextButton.disabled) { // Only redirect if the button is enabled
+                window.location.href = 'page3.html'; // Redirect to page3.html
+            }
+        });
     </script>
 </body>
 </html>
