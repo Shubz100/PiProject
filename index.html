@@ -14,7 +14,7 @@
             color: #670773;
         }
         /* Sliding Menu Styles */
-        #menu {
+        #menu-container {
             position: fixed;
             top: 0;
             left: -250px; /* Initially hidden off-screen to the left */
@@ -24,13 +24,21 @@
             transition: left 0.3s ease; /* Animation */
             z-index: 1000; /* Ensure it is above other content */
         }
-        #menu.open {
+        #menu-container.open {
             left: 0; /* Slide in */
+        }
+        #menu-container button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+        #menu {
+            padding: 50px 20px 20px 20px; /* Add padding to make room for the button */
+            color: white;
         }
         #menu ul {
             list-style: none;
             padding: 20px;
-            color: white;
         }
         #menu ul li {
             margin: 15px 0;
@@ -38,13 +46,19 @@
     </style>
 </head>
 <body class="bg-gray-100 flex flex-col items-center justify-between min-h-screen">
-    <div class="w-full custom-purple text-white p-4 flex items-center justify-between">
+    <div id="menu-container">
         <button onclick="toggleMenu()">
             <i class="fas fa-bars text-2xl"></i>
         </button>
-        <h1 class="text-2xl font-bold">Pi Trader</h1>
-        <div></div>
+        <div id="menu">
+            <ul>
+                <li><a href="#" class="custom-purple-text">Home</a></li>
+                <li><a href="#" class="custom-purple-text">Transaction History</a></li>
+                <li><a href="#" class="custom-purple-text">About</a></li>
+            </ul>
+        </div>
     </div>
+    <!-- Rest of your code remains the same -->
     <div class="text-center mt-4">
         <p class="custom-purple-text">Pi Coin has not launched. This is the premarket price set by our team and does not represent Official data</p>
         <br><br>
@@ -60,21 +74,5 @@
             </button>
         </a>
     </div>
-
-    <!-- Sliding Menu -->
-    <div id="menu">
-        <ul>
-            <li><a href="#" class="custom-purple-text">Home</a></li>
-            <li><a href="#" class="custom-purple-text">Transaction History</a></li>
-            <li><a href="#" class="custom-purple-text">About</a></li>
-        </ul>
-    </div>
-
-    <script>
-        function toggleMenu() {
-            const menu = document.getElementById('menu');
-            menu.classList.toggle('open'); // Toggle the 'open' class
-        }
-    </script>
 </body>
 </html>
