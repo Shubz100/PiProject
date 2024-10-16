@@ -1,5 +1,8 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pi Trader</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -9,6 +12,28 @@
         }
         .custom-purple-text {
             color: #670773;
+        }
+        /* Sliding Menu Styles */
+        #menu {
+            position: fixed;
+            top: 0;
+            left: -250px; /* Initially hidden off-screen to the left */
+            width: 250px;
+            height: 100%;
+            background-color: #670773;
+            transition: left 0.3s ease; /* Animation */
+            z-index: 1000; /* Ensure it is above other content */
+        }
+        #menu.open {
+            left: 0; /* Slide in */
+        }
+        #menu ul {
+            list-style: none;
+            padding: 20px;
+            color: white;
+        }
+        #menu ul li {
+            margin: 15px 0;
         }
     </style>
 </head>
@@ -36,9 +61,19 @@
         </a>
     </div>
 
+    <!-- Sliding Menu -->
+    <div id="menu">
+        <ul>
+            <li><a href="#" class="custom-purple-text">Home</a></li>
+            <li><a href="#" class="custom-purple-text">Transaction History</a></li>
+            <li><a href="#" class="custom-purple-text">About</a></li>
+        </ul>
+    </div>
+
     <script>
         function toggleMenu() {
-            alert("Menu button clicked!");
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('open'); // Toggle the 'open' class
         }
     </script>
 </body>
