@@ -1,0 +1,43 @@
+<html>
+<head>
+    <title>Pi Trader</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        .custom-purple {
+            background-color: #670773;
+        }
+        .custom-purple-text {
+            color: #670773;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex flex-col items-center justify-between min-h-screen">
+    <div class="w-full custom-purple text-white p-4 flex items-center justify-between">
+        <button onclick="toggleMenu()">
+            <i class="fas fa-bars text-2xl"></i>
+        </button>
+        <h1 class="text-2xl font-bold">Pi Trader</h1>
+        <div></div>
+    </div>
+    <div class="text-center mt-4">
+        <p class="custom-purple-text">Pi Coin has not launched. This is the premarket price set by our team and does not represent Official data</p>
+        <br><br>
+        <h2 class="text-4xl font-bold mt-4">$0.65/Pi</h2>
+    </div>
+    <div class="flex justify-center mt-8">
+        <img src="https://storage.googleapis.com/a1aa/image/nHtKiYEJNtYhCFGEdd2czOW74EMguRulx5F4Ve6ewjWmxanTA.jpg" alt="Placeholder image representing Pi Coin" class="custom-purple rounded-full w-64 h-64" width="256" height="256">
+    </div>
+    <div class="w-full flex justify-center mb-8">
+        <button class="custom-purple text-white text-2xl font-bold py-4 px-16 rounded-full mt-8">
+            Sell Your Pi
+        </button>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            alert("Menu button clicked!");
+        }
+    </script>
+</body>
+</html>
