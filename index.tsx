@@ -13,7 +13,7 @@ function App() {
         <button onClick={toggleMenu}>
           <i className="fas fa-bars text-2xl"></i>
         </button>
-        <h1 className="text-2xl font-bold">Pi Trader</h1>
+        <h1 className="text-2xl font-bold">Pi Traders</h1>
         <div></div>
       </div>
       <div className="text-center mt-4">
