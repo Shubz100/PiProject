@@ -8,21 +8,12 @@ generator client {
 }
 
 model User {
-  id            String   @id @default(auto()) @map("_id") @db.ObjectId
-  telegramId    Int      @unique
-  username      String?
-  firstName     String?
-  lastName      String?
-  claimedButton1 Boolean @default(false)
-  claimedButton2 Boolean @default(false)
-  claimedButton3 Boolean @default(false)
-  claimedButton4 Boolean @default(false)
-  claimedButton5 Boolean @default(false)
-  claimedButton6 Boolean @default(false)
-  claimedButton7 Boolean @default(false)
-  claimedButton8 Boolean @default(false)
-  invitedUsers  String[] @default([])
-  invitedBy     String?  @default("")
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  telegramId Int     @unique
+  username   String?
+  firstName  String?
+  lastName   String?
+  points     Int     @default(0)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 }
