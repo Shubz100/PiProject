@@ -1,20 +1,19 @@
-// prisma/schema.prisma
-generator client {
-  provider = "prisma-client-js"
-}
-
 datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
+generator client {
+  provider = "prisma-client-js"
+}
+
 model User {
-  id         String   @id @default(auto()) @map("_id") @db.ObjectId
-  telegramId Int      @unique  // Change to Int and make it required
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  telegramId Int     @unique
   username   String?
   firstName  String?
   lastName   String?
-  points     Int      @default(0)  // Add points field
+  points     Int     @default(0)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 }
