@@ -7,9 +7,9 @@ import { WebApp } from '@twa-dev/types'
 interface User {
   id: string;
   telegramId: number;
-  username?: string;
-  firstName?: string;
-  lastName?: string;
+  username: string | null;
+  firstName: string | null;
+  lastName: string | null;
   points: number;
   createdAt: Date;
   updatedAt: Date;
@@ -38,26 +38,34 @@ const PiTrader: React.FC = () => {
 
                 if (initDataUnsafe.user) {
                     try {
+                        console.log('Sending user data:', initDataUnsafe.user); // Debug log
                         const response = await fetch('/api/user', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json',
                             },
                             body: JSON.stringify({
-                                telegramId: initDataUnsafe.user.id,
-                                firstName: initDataUnsafe.user.first_name,
-                                lastName: initDataUnsafe.user.last_name,
+                                id: initDataUnsafe.user.id, // Match the expected format in route.ts
                                 username: initDataUnsafe.user.username,
+                                first_name: initDataUnsafe.user.first_name, // Match the snake_case format
+                                last_name: initDataUnsafe.user.last_name
                             }),
                         });
                         
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+                        
                         const data = await response.json();
+                        console.log('Received response:', data); // Debug log
+                        
                         if (data.error) {
                             setError(data.error);
                         } else {
                             setUser(data);
                         }
                     } catch (err) {
+                        console.error('Error:', err); // Debug log
                         setError('Failed to fetch user data');
                     }
                 } else {
@@ -98,7 +106,7 @@ const PiTrader: React.FC = () => {
                 </p>
                 {user && (
                     <div className="mt-4">
-                        <p>Welcome, {user.firstName}!</p>
+                        <p>Welcome, {user.firstName || 'User'}!</p>
                         <p>Points: {user.points}</p>
                     </div>
                 )}
