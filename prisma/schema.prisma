@@ -9,12 +9,12 @@ datasource db {
 }
 
 model User {
-
-  id             String   @id @default(auto()) @map("_id") @db.ObjectId
-  telegramId     String?  @unique
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  telegramId Int      @unique  // Change to Int and make it required
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
   username   String?
   firstName  String?
   lastName   String?
+  points     Int      @default(0)  // Add points field
 }
