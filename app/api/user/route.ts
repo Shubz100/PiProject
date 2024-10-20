@@ -1,32 +1,28 @@
-import { NextRequest, NextResponse } from 'next/server'
-import { prisma } from '@/lib/prisma'
+// app/api/user/route.ts
+import { prisma } from '@/lib/prisma';
+import { NextResponse } from 'next/server';
 
-export async function POST(req: NextRequest) {
+export async function POST(request: Request) {
     try {
-        const userData = await req.json()
+        const body = await request.json();
+        
+        // Find or create user
+        const user = await prisma.user.upsert({
+            where: {
+                // Use appropriate unique identifier
+                telegramId: body.telegramId || undefined,
+            },
+            update: {},
+            create: {
+                telegramId: body.telegramId,
+                piAmount: 0,
+                preMarketPrice: 0.65,
+            },
+        });
 
-        if (!userData || !userData.id) {
-            return NextResponse.json({ error: 'Invalid user data' }, { status: 400 })
-        }
-
-        let user = await prisma.user.findUnique({
-            where: { telegramId: userData.id }
-        })
-
-        if (!user) {
-            user = await prisma.user.create({
-                data: {
-                    telegramId: userData.id,
-                    username: userData.username || '',
-                    firstName: userData.first_name || '',
-                    lastName: userData.last_name || ''
-                }
-            })
-        }
-
-        return NextResponse.json(user)
+        return NextResponse.json(user);
     } catch (error) {
-        console.error('Error processing user data:', error)
-        return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
+        console.error('Request error', error);
+        return NextResponse.json({ error: 'Error creating/fetching user' }, { status: 500 });
     }
 }
